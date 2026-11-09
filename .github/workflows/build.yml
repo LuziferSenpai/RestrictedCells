@@ -26,6 +26,9 @@ jobs:
       - name: Make the wrapper executable
         run: chmod +x gradlew
 
+      - name: Download Gradle
+        run: for attempt in 1 2 3 4 5; do ./gradlew --version && exit 0; sleep $((attempt * 15)); done; exit 1
+
       - name: Build
         run: ./gradlew build
 
