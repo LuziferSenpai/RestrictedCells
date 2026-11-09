@@ -1,0 +1,104 @@
+{
+  "$schema": "schema.json",
+  "includes": [
+    "common/common.json"
+  ],
+  "background": {
+    "texture": "restrictedcells:textures/guis/restricted_cell_settings.png",
+    "srcRect": [
+      0,
+      0,
+      176,
+      136
+    ]
+  },
+  "text": {
+    "dialog_title": {
+      "text": {
+        "translate": "gui.restrictedcells.Restrictions"
+      },
+      "position": {
+        "left": 8,
+        "top": 6
+      }
+    },
+    "amount_label": {
+      "text": {
+        "translate": "gui.restrictedcells.ResourceAmount"
+      },
+      "position": {
+        "left": 8,
+        "top": 20
+      }
+    },
+    "types_label": {
+      "text": {
+        "translate": "gui.restrictedcells.Types"
+      },
+      "position": {
+        "left": 120,
+        "top": 20
+      }
+    },
+    "max_items": {
+      "position": {
+        "left": 8,
+        "top": 52
+      }
+    },
+    "bytes_total": {
+      "position": {
+        "left": 8,
+        "top": 62
+      }
+    },
+    "bytes_allocated": {
+      "position": {
+        "left": 8,
+        "top": 72
+      }
+    },
+    "bytes_free": {
+      "position": {
+        "left": 8,
+        "top": 82
+      }
+    },
+    "resources_per_byte": {
+      "position": {
+        "left": 8,
+        "top": 92
+      }
+    },
+    "bytes_per_type": {
+      "position": {
+        "left": 8,
+        "top": 102
+      }
+    }
+  },
+  "widgets": {
+    "back": {
+      "left": 154,
+      "top": 0
+    },
+    "amountInput": {
+      "left": 8,
+      "top": 31,
+      "width": 104,
+      "height": 12
+    },
+    "typesInput": {
+      "left": 120,
+      "top": 31,
+      "width": 24,
+      "height": 12
+    },
+    "reset": {
+      "left": 8,
+      "top": 114,
+      "width": 40,
+      "height": 14
+    }
+  }
+}

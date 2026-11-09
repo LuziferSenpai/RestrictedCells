@@ -1,0 +1,28 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "megacells"
+        }
+      ],
+      "recipe": {
+        "type": "restrictedcells:restricted_cell",
+        "category": "misc",
+        "ingredients": [
+          {
+            "item": "megacells:fluid_storage_cell_256m"
+          },
+          {
+            "item": "ae2:logic_processor"
+          }
+        ],
+        "result": {
+          "item": "restrictedcells:restricted_fluid_cell_256m"
+        }
+      }
+    }
+  ]
+}

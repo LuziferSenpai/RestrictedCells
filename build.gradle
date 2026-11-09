@@ -1,0 +1,191 @@
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'net.neoforged.moddev.legacyforge'
+    id 'io.freefair.lombok' version '8.13.1'
+    id 'com.diffplug.spotless' version '6.25.0'
+}
+
+group = mod_group_id
+version = mod_version
+
+base {
+    archivesName = mod_id
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir 'src/generated/resources'
+        }
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {
+        name "expandiumReleases"
+        url "https://repo.expandium.net/releases"
+        content {
+            includeGroup "appeng"
+        }
+    }
+    maven {
+        name 'modmaven'
+        url "https://modmaven.dev/"
+        content {
+            includeGroup "mezz.jei"
+            includeGroup "mekanism"
+        }
+    }
+    maven {
+        name 'cursemaven'
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+    maven {
+        name = 'TerraformersMC'
+        url = 'https://maven.terraformersmc.com/'
+        content {
+            includeGroup 'dev.emi'
+        }
+    }
+}
+
+dependencies {
+    modImplementation "appeng:appliedenergistics2-forge:${uelm_version}"
+    modImplementation "org.appliedenergistics:guideme:${guideme_version}"
+
+    modCompileOnly "mezz.jei:jei-${jei_minecraft_version}-common-api:${jei_version}"
+    modCompileOnly "mezz.jei:jei-${jei_minecraft_version}-forge-api:${jei_version}"
+    modCompileOnly "dev.emi:emi-forge:${emi_version}:api"
+
+    if (project.runtime_itemlist_mod == "jei") {
+        modRuntimeOnly "mezz.jei:jei-${jei_minecraft_version}-forge:${jei_version}"
+    } else if (project.runtime_itemlist_mod == "emi") {
+        modRuntimeOnly "dev.emi:emi-forge:${emi_version}"
+    }
+
+    if (project.runtime_tooltip_mod == "jade") {
+        modImplementation "curse.maven:jade-324717:${project.jade_file_id}"
+    } else {
+        modCompileOnly "curse.maven:jade-324717:${project.jade_file_id}"
+    }
+
+    if (project.runtime_cell_addons.contains("megacells")) {
+        modRuntimeOnly "curse.maven:mega-cells-622112:${project.mega_cells_file_id}"
+        modRuntimeOnly "curse.maven:cloth-config-348521:${project.cloth_config_file_id}"
+    }
+
+    if (project.runtime_cell_addons.contains("appmek")) {
+        modRuntimeOnly "curse.maven:applied-mekanistics-574300:${project.applied_mekanistics_file_id}"
+        modRuntimeOnly "mekanism:Mekanism:${minecraft_version}-${project.mekanism_version}:all"
+    }
+
+    if (project.runtime_cell_addons.contains("expandedae")) {
+        modRuntimeOnly "curse.maven:expanded-ae-1213351:${project.expanded_ae_file_id}"
+        modRuntimeOnly "curse.maven:ex-pattern-provider-892005:${project.extended_ae_file_id}"
+        modRuntimeOnly "curse.maven:applied-energistics-2-wireless-terminals-459929:${project.ae2wtlib_file_id}"
+        modRuntimeOnly "curse.maven:glodium-957920:${project.glodium_file_id}"
+        modRuntimeOnly "curse.maven:ae2addonlib-1366135:${project.ae2addonlib_file_id}"
+        modRuntimeOnly "curse.maven:architectury-api-419699:${project.architectury_file_id}"
+        modRuntimeOnly "curse.maven:curios-309927:${project.curios_file_id}"
+        modRuntimeOnly "curse.maven:geckolib-388172:${project.geckolib_file_id}"
+        modRuntimeOnly "curse.maven:cloth-config-348521:${project.cloth_config_file_id}"
+    }
+
+    modCompileOnly "curse.maven:applied-mekanistics-574300:${project.applied_mekanistics_file_id}"
+
+    compileOnly 'org.jetbrains:annotations:24.1.0'
+
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+legacyForge {
+    version = "${minecraft_version}-${forge_version}"
+
+    mods {
+        "${mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+
+    runs {
+        configureEach {
+            gameDirectory = project.file('run')
+            systemProperty 'forge.logging.console.level', 'debug'
+
+            jvmArguments.addAll(
+                    "--add-opens", "java.base/sun.security.util=ALL-UNNAMED",
+                    "--add-opens", "java.base/java.util.jar=ALL-UNNAMED"
+            )
+        }
+        client {
+            client()
+        }
+        server {
+            server()
+        }
+        data {
+            data()
+            programArguments.addAll(
+                    '--mod', mod_id,
+                    '--all',
+                    '--output', file('src/generated/resources/').absolutePath,
+                    '--existing', file('src/main/resources').absolutePath,
+                    '--existing-mod', 'ae2'
+            )
+        }
+    }
+
+}
+
+Map<String, String> expansionVariables = [
+        'minecraft_version_range': minecraft_version_range,
+        'forge_version_range'    : forge_version_range,
+        'loader_version_range'   : loader_version_range,
+        'uelm_version_range'     : uelm_version_range,
+        'mod_id'                 : mod_id,
+        'mod_name'               : mod_name,
+        'mod_version'            : mod_version,
+        'mod_license'            : mod_license,
+        'mod_authors'            : mod_authors,
+        'mod_description'        : mod_description
+]
+
+processResources {
+    exclude '.cache'
+
+    for (var entry : expansionVariables.entrySet()) {
+        inputs.property(entry.key, entry.value)
+    }
+
+    filesMatching("META-INF/mods.toml") {
+        expand expansionVariables
+    }
+}
+
+spotless {
+    java {
+        target 'src/*/java/**/*.java'
+
+        endWithNewline()
+        indentWithSpaces()
+        removeUnusedImports()
+        toggleOffOn()
+        eclipse().configFile 'codeformat/codeformat.xml'
+        importOrder('java', 'javax', 'com.google', 'org', 'net', 'com.restrictedcells', 'lombok', 'it', 'me', 'appeng', '', '\\#')
+    }
+}

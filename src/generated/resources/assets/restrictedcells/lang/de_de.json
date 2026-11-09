@@ -1,0 +1,20 @@
+{
+  "gui.restrictedcells.BytesAllocated": "Belegte Bytes: %s",
+  "gui.restrictedcells.BytesFree": "Freie Bytes: %s",
+  "gui.restrictedcells.BytesPerType": "Bytes pro Typ: %s",
+  "gui.restrictedcells.BytesTotal": "Bytes gesamt: %s",
+  "gui.restrictedcells.CreativeTab": "Restricted Cells",
+  "gui.restrictedcells.MaxResources": "Max. Ressourcen: %s",
+  "gui.restrictedcells.MaxResourcesPerType": "Max. Ressourcen pro Typ: %s",
+  "gui.restrictedcells.MaximumOfResource": "Max.: %s",
+  "gui.restrictedcells.MaximumPerType": "Max. pro Typ: %s",
+  "gui.restrictedcells.Reset": "Zurücksetzen",
+  "gui.restrictedcells.ResourceAmount": "Ressourcenmenge",
+  "gui.restrictedcells.ResourceAmountPerType": "Ressourcen pro Typ",
+  "gui.restrictedcells.ResourcesPerByte": "Ressourcen pro Byte: %s",
+  "gui.restrictedcells.Restricted": "Eingeschränkt",
+  "gui.restrictedcells.RestrictedName": "Eingeschränkte %s",
+  "gui.restrictedcells.RestrictedSuffix": "(eingeschränkt)",
+  "gui.restrictedcells.Restrictions": "Zelleneinschränkungen",
+  "gui.restrictedcells.Types": "Typen"
+}

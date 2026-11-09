@@ -1,0 +1,28 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "expandedae"
+        }
+      ],
+      "recipe": {
+        "type": "restrictedcells:restricted_cell",
+        "category": "misc",
+        "ingredients": [
+          {
+            "item": "expandedae:artificial_universe_fluid_cell"
+          },
+          {
+            "item": "ae2:logic_processor"
+          }
+        ],
+        "result": {
+          "item": "restrictedcells:restricted_universe_fluid_cell"
+        }
+      }
+    }
+  ]
+}

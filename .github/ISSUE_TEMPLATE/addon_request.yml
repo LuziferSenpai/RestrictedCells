@@ -1,0 +1,17 @@
+name: Support for another add-on
+description: Ask for restricted versions of another add-on's cells.
+labels: ["compat"]
+body:
+  - type: input
+    id: addon
+    attributes:
+      label: Add-on and link
+    validations:
+      required: true
+  - type: textarea
+    id: cells
+    attributes:
+      label: Its cells
+      description: Names and sizes. Say if one cell can hold several types, and if there is a 1.20.1 Forge build. A types limit does nothing for single-type cells.
+    validations:
+      required: true

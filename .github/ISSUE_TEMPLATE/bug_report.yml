@@ -1,0 +1,41 @@
+name: Bug report
+description: You found a bug or a crash. Please report it here.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Restricted Cells only works with AE2 UELM. Reports from the original AE2 will be closed.
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How to reproduce the bug
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: Restricted Cells, Minecraft, Forge and AE2 UELM.
+    validations:
+      required: true
+  - type: input
+    id: addons
+    attributes:
+      label: Other cell add-ons
+      description: MEGA Cells, Expanded AE and Applied Mekanistics with their versions, or none.
+  - type: textarea
+    id: logs
+    attributes:
+      label: Log
+      description: Link to latest.log or the crash report on a paste site or a gist.

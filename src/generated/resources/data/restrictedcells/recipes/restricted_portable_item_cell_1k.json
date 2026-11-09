@@ -1,0 +1,15 @@
+{
+  "type": "restrictedcells:restricted_cell",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "ae2:portable_item_cell_1k"
+    },
+    {
+      "item": "ae2:logic_processor"
+    }
+  ],
+  "result": {
+    "item": "restrictedcells:restricted_portable_item_cell_1k"
+  }
+}

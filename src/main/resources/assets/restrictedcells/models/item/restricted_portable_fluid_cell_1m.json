@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "restrictedcells:item/restricted_portable_mega_fluid_screen",
+    "layer1": "ae2:item/portable_cell_led",
+    "layer2": "restrictedcells:item/restricted_portable_fluid_housing",
+    "layer3": "megacells:item/cell/portable/portable_cell_side_1m"
+  }
+}

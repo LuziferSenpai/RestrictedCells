@@ -1,0 +1,6 @@
+{
+  "parent": "ae2:block/drive/drive_cell",
+  "textures": {
+    "cell": "restrictedcells:block/drive/cells/restricted_dual_cell_4k"
+  }
+}

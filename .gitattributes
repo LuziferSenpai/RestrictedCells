@@ -1,0 +1,9 @@
+* text=auto eol=lf
+
+*.png binary
+*.jar binary
+*.ogg binary
+
+*.bat text eol=crlf
+
+src/generated/** linguist-generated=true

@@ -1,0 +1,28 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "appmek"
+        }
+      ],
+      "recipe": {
+        "type": "restrictedcells:restricted_cell",
+        "category": "misc",
+        "ingredients": [
+          {
+            "item": "appmek:portable_chemical_storage_cell_4k"
+          },
+          {
+            "item": "ae2:logic_processor"
+          }
+        ],
+        "result": {
+          "item": "restrictedcells:restricted_portable_chemical_cell_4k"
+        }
+      }
+    }
+  ]
+}

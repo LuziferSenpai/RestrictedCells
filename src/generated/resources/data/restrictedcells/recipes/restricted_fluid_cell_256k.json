@@ -1,0 +1,15 @@
+{
+  "type": "restrictedcells:restricted_cell",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "ae2:fluid_storage_cell_256k"
+    },
+    {
+      "item": "ae2:logic_processor"
+    }
+  ],
+  "result": {
+    "item": "restrictedcells:restricted_fluid_cell_256k"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "megacells"
+        }
+      ],
+      "recipe": {
+        "type": "restrictedcells:restricted_cell",
+        "category": "misc",
+        "ingredients": [
+          {
+            "item": "megacells:portable_item_cell_64m"
+          },
+          {
+            "item": "ae2:logic_processor"
+          }
+        ],
+        "result": {
+          "item": "restrictedcells:restricted_portable_item_cell_64m"
+        }
+      }
+    }
+  ]
+}
